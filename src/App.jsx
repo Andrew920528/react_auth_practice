@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import "./style/loginCard.scss";
 import "./style/signUpPage.scss";
+import "./style/promptCard.scss";
 import LogInPage from "./components/LogInPage";
 import User from "./models/User";
 import UserTablePage from "./components/UserTablePage";
