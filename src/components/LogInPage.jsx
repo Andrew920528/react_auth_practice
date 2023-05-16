@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-
-const LogInPage = ({ users }) => {
+import { useNavigate } from "react-router-dom";
+const LogInPage = ({ users, setSignedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   function logIn() {
     // invalid username or password
@@ -12,13 +13,16 @@ const LogInPage = ({ users }) => {
     }
 
     // check username and password matches
-    users.forEach((element) => {
-      if (element.password == password && element.username == username) {
+
+    for (let user of users) {
+      if (user.password == password && user.username == username) {
         // log in successful!
         alert("Log in successful!");
+        setSignedIn(true);
+        navigate("/config-table");
         return;
       }
-    });
+    }
 
     alert("username or password not found");
   }
@@ -64,7 +68,12 @@ const LogInPage = ({ users }) => {
           <hr />
         </div>
 
-        <button className="createAccountBtn">Create New Account</button>
+        <button
+          className="createAccountBtn"
+          onClick={() => navigate("/sign-up")}
+        >
+          Create New Account
+        </button>
       </div>
     </div>
   );
