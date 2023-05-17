@@ -1,0 +1,112 @@
+body {
+  background-color: #f5f5f3;
+}
+
+.logInPage {
+  padding: 0.9rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cardWrap {
+  background-color: white;
+  -webkit-box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.307);
+          box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.307);
+  padding: 0rem 2.5rem 2.5rem 2.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 20px;
+  width: 300px;
+}
+
+.cardWrap .title {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: large;
+  color: #222222;
+  padding: 10px;
+}
+
+.cardWrap .logInSection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  text-align: center;
+}
+
+.cardWrap .logInSection .inputField {
+  padding: 10px 10px;
+  line-height: 28px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: large;
+}
+
+.cardWrap .logInSection .logInBtn {
+  padding: 10px 10px;
+  line-height: 28px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  background-color: #e3ff7d;
+  border-radius: 5px;
+  border-width: 0px;
+  font-size: large;
+}
+
+.cardWrap .logInSection .forgotPwd {
+  color: #6e9d00;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.cardWrap .logInSection .forgotPwd:hover {
+  text-decoration: underline;
+}
+
+.cardWrap .divider {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.cardWrap .divider hr {
+  border-top: 1px solid lightgray;
+}
+
+.cardWrap .createAccountBtn {
+  padding: 10px 10px;
+  line-height: 28px;
+  margin-bottom: 1rem;
+  background-color: #6fecc0;
+  font-weight: bold;
+  border-radius: 5px;
+  border-width: 0px;
+  font-size: large;
+}
+/*# sourceMappingURL=loginCard.css.map */

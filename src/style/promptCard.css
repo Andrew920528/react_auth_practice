@@ -1,0 +1,102 @@
+.prompt-card-fit-div {
+  width: 100vw;
+  position: fixed;
+  z-index: 10;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.207);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.prompt-card-fit-div .prompt-card {
+  border-radius: 5px;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14);
+          box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14);
+}
+
+.cardContent {
+  margin: 10px 30px 10px 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.topRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.topRow .closeBtn {
+  height: 30px;
+  width: 30px;
+}
+
+.topRow .closeBtn:hover {
+  cursor: pointer;
+}
+
+.mainWindow div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.mainWindow div p {
+  font-size: large;
+  color: #2e2e2e;
+}
+
+.mainWindow div .inputField {
+  padding: 10px 10px;
+  line-height: 28px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: large;
+  background-color: white;
+}
+
+.mainWindow div .btn {
+  padding: 10px 10px;
+  line-height: 28px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  background-color: #e3ff7d;
+  border-radius: 5px;
+  border-width: 0px;
+  font-size: large;
+}
+/*# sourceMappingURL=promptCard.css.map */

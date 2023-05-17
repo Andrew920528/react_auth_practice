@@ -45,3 +45,13 @@
     width: 10%;
   }
 }
+
+.cancel {
+  text-align: center;
+  color: grey;
+}
+
+.cancel:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

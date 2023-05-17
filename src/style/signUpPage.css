@@ -1,0 +1,87 @@
+.signUpPage {
+  padding: 0.9rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.question {
+  color: #6e9d00;
+  text-decoration: none;
+  font-weight: 700;
+  margin-top: 0px;
+}
+
+.bot {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  text-align: center;
+}
+
+.signUpPage .cardWrap {
+  -webkit-box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.307);
+          box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.307);
+  padding: 0rem, 2.5rem, 2.5rem 2.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 20px;
+  width: 400px;
+}
+
+.basicInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 10px;
+}
+
+.basicInfo .inputField {
+  padding: 10px 10px;
+  line-height: 28px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: large;
+  width: 40%;
+}
+
+.basicInfo .age {
+  width: 10%;
+}
+
+.cancel {
+  text-align: center;
+  color: grey;
+}
+
+.cancel:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+/*# sourceMappingURL=signUpPage.css.map */

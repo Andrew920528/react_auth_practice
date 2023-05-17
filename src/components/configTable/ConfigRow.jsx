@@ -1,13 +1,20 @@
 import React from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { AiFillEdit } from "react-icons/ai";
+import { format } from "date-fns";
 const ConfigRow = ({ rowData, setOpenUpdate, setOpenDelete, index }) => {
   return (
     rowData && (
       <tr>
         {Object.keys(rowData).map((data, ind) => {
           if (data == "password") return;
-          return <td key={ind + "dataEntry"}>{rowData[data]}</td>;
+          let display;
+          if (data == "lastModified") {
+            display = format(rowData[data], "hh:mm:ss - yyyy/MM/dd (EEE)");
+          } else {
+            display = rowData[data];
+          }
+          return <td key={ind + "dataEntry"}>{display}</td>;
         })}
         <td>
           <div>

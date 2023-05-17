@@ -11,10 +11,18 @@ import UserTablePage from "./components/UserTablePage";
 import SignUpPage from "./components/SignUpPage";
 import ConfigTablePage from "./components/ConfigTablePage";
 function App() {
-  const testUser = new User(0, "a", "a", "Bro", "Him", 30, -99);
-  const user1 = new User(1, "andrew001", "andrewPwd", "Andrew", "Hsu", 19, -99);
+  const testUser = new User(0, "a", "a", "Bro", "Him", 30, new Date());
+  const user1 = new User(
+    1,
+    "andrew001",
+    "andrewPwd",
+    "Andrew",
+    "Hsu",
+    19,
+    new Date()
+  );
   const [currID, setCurrID] = useState(1);
-  const [users, setUsers] = useState([testUser]);
+  const [users, setUsers] = useState([testUser, user1]);
   const [signedIn, setSignedIn] = useState(false);
 
   if (!signedIn) {

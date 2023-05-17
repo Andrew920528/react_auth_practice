@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import User from "../models/User";
 
 const SignUpPage = ({ users, setUsers, currID, setCurrID, signedIn }) => {
-  const [id, setId] = useState(-1);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState("");
@@ -66,7 +65,7 @@ const SignUpPage = ({ users, setUsers, currID, setCurrID, signedIn }) => {
       firstName,
       lastName,
       age,
-      -99
+      new Date()
     );
     setCurrID(currID + 1);
     console.log(newUser.id);
@@ -161,7 +160,10 @@ const SignUpPage = ({ users, setUsers, currID, setCurrID, signedIn }) => {
           <hr />
         </div>
         {signedIn ? (
-          <div></div>
+          <div className="cancel" onClick={() => navigate("/user-table")}>
+            {" "}
+            Cancel
+          </div>
         ) : (
           <div className="bot">
             <p className="question" href="">

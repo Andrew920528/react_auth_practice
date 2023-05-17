@@ -13,7 +13,7 @@ const UpdateCard = ({ openUpdate, setOpenUpdate, tableData, setTableData }) => {
     newTableData[openUpdate].firstName = firstName;
     newTableData[openUpdate].lastName = lastName;
     newTableData[openUpdate].age = age;
-
+    newTableData[openUpdate].lastModified = new Date();
     setTableData(newTableData);
     alert("Successfully updated!");
     setOpenUpdate(null);
