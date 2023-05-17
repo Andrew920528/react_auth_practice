@@ -6,6 +6,10 @@ import InsertCard from "./configTable/InsertCard";
 import UpdateCard from "./configTable/UpdateCard";
 import DeleteCard from "./configTable/DeleteCard";
 import { useNavigate } from "react-router-dom";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { RiLogoutCircleRLine } from "react-icons/ri";
+import { BiTable } from "react-icons/bi";
+
 const ConfigTablePage = ({ setSignedIn }) => {
   const b1 = new Building(
     "SBT",
@@ -57,8 +61,17 @@ const ConfigTablePage = ({ setSignedIn }) => {
   return (
     <div className="content">
       <div className="options">
-        <button onClick={() => navigate("/user-table")}>User Table</button>
-        <button onClick={() => logOut()}>Log Out</button>
+        <h1>Config Table</h1>
+        <div className="rightBtns">
+          <div className="btn rectBtn" onClick={() => navigate("/user-table")}>
+            <BiTable className="icon" />
+            <div>User Table</div>
+          </div>
+          <div className="btn rectBtn" onClick={() => logOut()}>
+            <RiLogoutCircleRLine className="icon" />
+            <div>Log Out</div>
+          </div>
+        </div>
       </div>
 
       <div className="table">
@@ -79,8 +92,12 @@ const ConfigTablePage = ({ setSignedIn }) => {
           </tbody>
         </table>
       </div>
-      <div className="btn">
-        <button onClick={() => setOpenInsert(true)}> Insert</button>
+      <div
+        className="btn rectBtn insertBtn"
+        onClick={() => setOpenInsert(true)}
+      >
+        <IoIosAddCircleOutline className="icon"></IoIosAddCircleOutline>
+        <div>Add new entry</div>
       </div>
       <InsertCard
         openInsert={openInsert}

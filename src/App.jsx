@@ -39,6 +39,7 @@ function App() {
                 users={users}
                 setSignedIn={setSignedIn}
                 setUsers={setUsers}
+                signedIn={signedIn}
               ></LogInPage>
             }
           />
@@ -50,12 +51,33 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route
+          path="sign-up"
+          element={
+            <SignUpPage
+              users={users}
+              setUsers={setUsers}
+              currID={currID}
+              setCurrID={setCurrID}
+              signedIn={signedIn}
+            ></SignUpPage>
+          }
+        />
+        <Route
           path="/config-table"
           element={
             <ConfigTablePage setSignedIn={setSignedIn}></ConfigTablePage>
           }
         />
-        <Route path="/user-table" element={<UserTablePage></UserTablePage>} />
+        <Route
+          path="/user-table"
+          element={
+            <UserTablePage
+              users={users}
+              setSignedIn={setSignedIn}
+              setUsers={setUsers}
+            ></UserTablePage>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

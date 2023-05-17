@@ -7,6 +7,7 @@ const Header = ({ entries }) => {
         {Object.keys(entries).map((element, index) => {
           return <th key={index + "headerEntry"}>{entries[element]}</th>;
         })}
+        <th colSpan={2}>Actions</th>
       </tr>
     </thead>
   );

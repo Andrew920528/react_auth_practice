@@ -8,6 +8,8 @@ const LogInPage = ({ users, setUsers, setSignedIn }) => {
   const navigate = useNavigate();
 
   function logIn() {
+    console.log(users.length);
+    console.log(users[0]);
     // invalid username or password
     if (username.trim() == "" || password.trim() == "") {
       alert("invalid username or password");
@@ -54,7 +56,7 @@ const LogInPage = ({ users, setUsers, setSignedIn }) => {
 
           <input
             className="inputField"
-            type="text"
+            type="password"
             placeholder="Password"
             onChange={(event) => setPassword(event.target.value)}
             value={password}

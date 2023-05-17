@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import User from "../models/User";
 
-const SignUpPage = ({ users, setUsers, currID, setCurrID }) => {
+const SignUpPage = ({ users, setUsers, currID, setCurrID, signedIn }) => {
   const [id, setId] = useState(-1);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -74,8 +74,13 @@ const SignUpPage = ({ users, setUsers, currID, setCurrID }) => {
     temp.push(newUser);
     setUsers(temp);
 
-    alert("Account created! Please log in");
-    navigate("/sign-in");
+    if (signedIn) {
+      alert("Account created!");
+      navigate("/user-table");
+    } else {
+      alert("Account created! Please log in");
+      navigate("/sign-in");
+    }
   }
 
   return (
@@ -155,18 +160,22 @@ const SignUpPage = ({ users, setUsers, currID, setCurrID }) => {
         <div className="divider">
           <hr />
         </div>
-        <div className="bot">
-          <p className="question" href="">
-            Already have an account?
-          </p>
+        {signedIn ? (
+          <div></div>
+        ) : (
+          <div className="bot">
+            <p className="question" href="">
+              Already have an account?
+            </p>
 
-          <button
-            className="createAccountBtn"
-            onClick={() => navigate("/sign-in")}
-          >
-            Log-in with existing account
-          </button>
-        </div>
+            <button
+              className="createAccountBtn"
+              onClick={() => navigate("/sign-in")}
+            >
+              Log-in with existing account
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

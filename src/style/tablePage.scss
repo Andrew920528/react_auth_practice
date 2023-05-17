@@ -1,17 +1,91 @@
 .content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 20px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  padding: 20px 50px 50px 50px;
+  border-radius: 7px;
+  background-color: white;
 }
 
-table,
-th,
-td {
-  border-collapse: collapse;
-  border: 1px solid #000000;
+table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  padding: 10px;
+  border-radius: 7px;
+  th {
+    border: 1px solid #a1a1a1;
+    font-size: 12px;
+    padding: 10px;
+    background-color: rgb(247, 255, 216);
+  }
+  td {
+    border: 1px solid #cbcbcb;
+    font-size: 12px;
+    padding: 10px;
+  }
+  tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+  }
+  tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+  }
+  tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+  }
+  tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+  }
+}
+
+.rectBtn {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(227, 255, 125);
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  padding: 15px;
+  gap: 5px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.124);
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.btnInTable {
+  width: 20px;
+  height: 20px;
 }
 
 .table {
+  max-height: 300px;
   overflow-y: scroll;
+}
+
+.rectBtn:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
+  .rightBtns {
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
 }

@@ -4,8 +4,8 @@ import PromptCard from "../PromptCard";
 const DeleteCard = ({ openDelete, setOpenDelete, tableData, setTableData }) => {
   function deleteEntry(ind) {
     let newTableData = [...tableData];
-    delete newTableData[ind];
 
+    newTableData.splice(ind, 1);
     setTableData(newTableData);
     alert("Successfully deleted!");
   }
