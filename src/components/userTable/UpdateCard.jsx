@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PromptCard from "../PromptCard";
-
+import { RxCrossCircled } from "react-icons/rx";
 const UpdateCard = ({ openUpdate, setOpenUpdate, tableData, setTableData }) => {
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -19,7 +19,11 @@ const UpdateCard = ({ openUpdate, setOpenUpdate, tableData, setTableData }) => {
     setOpenUpdate(null);
   }
   useEffect(() => {
-    if (openUpdate != null && openUpdate > 0 && openUpdate < tableData.length) {
+    if (
+      openUpdate != null &&
+      openUpdate >= 0 &&
+      openUpdate < tableData.length
+    ) {
       setUsername(tableData[openUpdate].username);
       setFirstName(tableData[openUpdate].firstName);
       setLastName(tableData[openUpdate].lastName);
@@ -35,57 +39,74 @@ const UpdateCard = ({ openUpdate, setOpenUpdate, tableData, setTableData }) => {
     <>
       <PromptCard
         id={"update-card"}
-        width={60}
-        height={80}
+        width={50}
+        height={55}
         padding={"10px"}
         promptCardData={
           openUpdate != null && openUpdate >= 0 && openUpdate < tableData.length
         }
       >
-        <div className="promp-head">
-          <div className="prompt-title"> Update Data</div>
-          <div className="prompt-btn">
-            <button onClick={() => setOpenUpdate(null)}> Close </button>
+        <div className="cardContent">
+          <div className="topRow">
+            <h2>Update Info</h2>
+            <RxCrossCircled
+              className="closeBtn"
+              onClick={() => {
+                setOpenUpdate(null);
+              }}
+            ></RxCrossCircled>
           </div>
-        </div>
+          <div>
+            <hr />
+          </div>
 
-        <div className="prompt-content">
-          <div className="prompt-input"></div>
-          <div className="prompt-input">
-            <label htmlFor=""> Username </label>
-            <input
-              type="text"
-              onChange={(event) => setUsername(event.target.value)}
-              value={username}
-            />
+          <div className="mainWindow updateWindow">
+            <div className="prompt-input">
+              <label htmlFor=""> Username </label>
+              <input
+                type="text"
+                onChange={(event) => setUsername(event.target.value)}
+                value={username}
+                placeholder="Username"
+              />
+            </div>
+            <div className="basicInfo">
+              <div className="prompt-input">
+                <label htmlFor=""> First Name </label>
+                <input
+                  type="text"
+                  onChange={(event) => setFirstName(event.target.value)}
+                  value={firstName}
+                  placeholder="First Name"
+                />
+              </div>
+              <div className="prompt-input">
+                <label htmlFor=""> Last Name </label>
+                <input
+                  type="text"
+                  onChange={(event) => setLastName(event.target.value)}
+                  value={lastName}
+                  placeholder="Last Name"
+                />
+              </div>
+              <div className="prompt-input age">
+                <label htmlFor=""> Age </label>
+                <input
+                  type="text"
+                  onChange={(event) => setAge(event.target.value)}
+                  value={age}
+                  placeholder="age"
+                />
+              </div>
+            </div>
+
+            <div className="submit">
+              <button className="btn" onClick={submit}>
+                {" "}
+                Submit{" "}
+              </button>
+            </div>
           </div>
-          <div className="prompt-input">
-            <label htmlFor=""> First Name </label>
-            <input
-              type="text"
-              onChange={(event) => setFirstName(event.target.value)}
-              value={firstName}
-            />
-          </div>
-          <div className="prompt-input">
-            <label htmlFor=""> Last Name </label>
-            <input
-              type="text"
-              onChange={(event) => setLastName(event.target.value)}
-              value={lastName}
-            />
-          </div>
-          <div className="prompt-input">
-            <label htmlFor=""> Age </label>
-            <input
-              type="text"
-              onChange={(event) => setAge(event.target.value)}
-              value={age}
-            />
-          </div>
-        </div>
-        <div className="submit">
-          <button onClick={submit}> Submit </button>
         </div>
       </PromptCard>
     </>

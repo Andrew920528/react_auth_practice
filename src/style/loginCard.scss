@@ -49,6 +49,9 @@ body {
     border-width: 0px;
     font-size: large;
   }
+  .logInBtn:hover {
+    cursor: pointer;
+  }
   .forgotPwd {
     color: rgb(110, 157, 0);
     text-decoration: none;
@@ -76,4 +79,8 @@ body {
   border-radius: 5px;
   border-width: 0px;
   font-size: large;
+}
+
+.cardWrap .createAccountBtn:hover {
+  cursor: pointer;
 }

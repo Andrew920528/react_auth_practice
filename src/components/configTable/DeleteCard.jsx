@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PromptCard from "../PromptCard";
+import { RxCrossCircled } from "react-icons/rx";
 
 const DeleteCard = ({ openDelete, setOpenDelete, tableData, setTableData }) => {
   function deleteEntry(ind) {
@@ -14,19 +15,27 @@ const DeleteCard = ({ openDelete, setOpenDelete, tableData, setTableData }) => {
     <>
       <PromptCard
         id={"delete-card"}
-        width={60}
-        height={80}
+        width={40}
+        height={30}
         padding={"10px"}
         promptCardData={
           openDelete != null && openDelete >= 0 && openDelete < tableData.length
         }
       >
-        <div className="delete-options">
-          <div className="prompt-title"> Delete Data? </div>
-          <div className="prompt-btn">
-            <button onClick={() => setOpenDelete(null)}> Cancel </button>
+        <div className="cardContent delete">
+          <div className="topRow">
+            <h2>Delete Date?</h2>
+            <RxCrossCircled
+              className="closeBtn"
+              onClick={() => {
+                setOpenDelete(null);
+              }}
+            ></RxCrossCircled>
           </div>
-
+          <div>
+            <hr />
+          </div>
+          <p>Once deleted, the data could not be retrieved!</p>
           <button
             onClick={() => {
               deleteEntry(openDelete);

@@ -67,6 +67,11 @@ table {
   height: 20px;
 }
 
+.btnInTable:hover {
+  color: rgb(48, 134, 106);
+  cursor: pointer;
+}
+
 .table {
   max-height: 300px;
   overflow-y: scroll;
