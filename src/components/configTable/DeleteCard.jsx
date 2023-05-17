@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import PromptCard from "../PromptCard";
 
 const DeleteCard = ({ openDelete, setOpenDelete, tableData, setTableData }) => {
-  function deleteEntry(rowData) {
+  function deleteEntry(ind) {
     let newTableData = [...tableData];
-    delete newTableData[tableData.indexOf(rowData)];
+    delete newTableData[ind];
 
     setTableData(newTableData);
     alert("Successfully deleted!");
   }
+
   return (
     <>
       <PromptCard
@@ -16,7 +17,9 @@ const DeleteCard = ({ openDelete, setOpenDelete, tableData, setTableData }) => {
         width={60}
         height={80}
         padding={"10px"}
-        promptCardData={openDelete}
+        promptCardData={
+          openDelete != null && openDelete >= 0 && openDelete < tableData.length
+        }
       >
         <div className="delete-options">
           <div className="prompt-title"> Delete Data? </div>

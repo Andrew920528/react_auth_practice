@@ -4,27 +4,34 @@ import PromptCard from "../PromptCard";
 const UpdateCard = ({ openUpdate, setOpenUpdate, tableData, setTableData }) => {
   const [id, setId] = useState("");
   const [buildingDesc, setBuildingDesc] = useState("");
-  const [floor, setFloor] = useState("");
   const [roomId, setRoomId] = useState("");
+  const [floor, setFloor] = useState("");
   const [roomDesc, setRoomDesc] = useState("");
   function submit() {
     let newTableData = [...tableData];
-    newTableData[newTableData.indexOf(openUpdate)].name = name;
-    newTableData[newTableData.indexOf(openUpdate)].id = id;
-    newTableData[newTableData.indexOf(openUpdate)].age = age;
+    newTableData[openUpdate].id = id;
+    newTableData[openUpdate].buildingDesc = buildingDesc;
+    newTableData[openUpdate].roomId = roomId;
+    newTableData[openUpdate].floor = floor;
+    newTableData[openUpdate].roomDesc = roomDesc;
+
     setTableData(newTableData);
     alert("Successfully updated!");
     setOpenUpdate(null);
   }
   useEffect(() => {
-    if (openUpdate) {
-      setName(openUpdate.name);
-      setId(openUpdate.id);
-      setAge(openUpdate.age);
+    if (openUpdate != null && openUpdate > 0 && openUpdate < tableData.length) {
+      setId(tableData[openUpdate].id);
+      setBuildingDesc(tableData[openUpdate].buildingDesc);
+      setRoomId(tableData[openUpdate].roomId);
+      setFloor(tableData[openUpdate].floor);
+      setRoomDesc(tableData[openUpdate].roomDesc);
     } else {
-      setName("");
       setId("");
-      setAge("");
+      setBuildingDesc("");
+      setRoomId("");
+      setFloor("");
+      setRoomDesc("");
     }
   }, [openUpdate]);
   return (
@@ -34,7 +41,9 @@ const UpdateCard = ({ openUpdate, setOpenUpdate, tableData, setTableData }) => {
         width={60}
         height={80}
         padding={"10px"}
-        promptCardData={openUpdate}
+        promptCardData={
+          openUpdate != null && openUpdate >= 0 && openUpdate < tableData.length
+        }
       >
         <div className="promp-head">
           <div className="prompt-title"> Update Data</div>
@@ -45,36 +54,46 @@ const UpdateCard = ({ openUpdate, setOpenUpdate, tableData, setTableData }) => {
 
         <div className="prompt-content">
           <div className="prompt-input">
-            <label htmlFor=""> Name </label>
+            <label htmlFor=""> Building Id </label>
             <input
               type="text"
-              ref={inputName}
-              onChange={(event) => setName(event.target.value)}
-              value={name}
-            />
-          </div>
-
-          <div className="prompt-input">
-            <label htmlFor=""> Id </label>
-            <input
-              type="text"
-              ref={inputId}
               onChange={(event) => setId(event.target.value)}
               value={id}
             />
           </div>
-
           <div className="prompt-input">
-            <label htmlFor=""> Age </label>
+            <label htmlFor=""> Building Description </label>
             <input
               type="text"
-              ref={inputAge}
-              onChange={(event) => setAge(event.target.value)}
-              value={age}
+              onChange={(event) => setBuildingDesc(event.target.value)}
+              value={buildingDesc}
+            />
+          </div>
+          <div className="prompt-input">
+            <label htmlFor=""> Floor </label>
+            <input
+              type="text"
+              onChange={(event) => setFloor(event.target.value)}
+              value={floor}
+            />
+          </div>
+          <div className="prompt-input">
+            <label htmlFor=""> Room Id </label>
+            <input
+              type="text"
+              onChange={(event) => setRoomId(event.target.value)}
+              value={roomId}
+            />
+          </div>
+          <div className="prompt-input">
+            <label htmlFor=""> Room Description </label>
+            <input
+              type="text"
+              onChange={(event) => setRoomDesc(event.target.value)}
+              value={roomDesc}
             />
           </div>
         </div>
-
         <div className="submit">
           <button onClick={submit}> Submit </button>
         </div>

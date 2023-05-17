@@ -4,6 +4,7 @@ import "./App.scss";
 import "./style/loginCard.scss";
 import "./style/signUpPage.scss";
 import "./style/promptCard.scss";
+import "./style/tablePage.scss";
 import LogInPage from "./components/LogInPage";
 import User from "./models/User";
 import UserTablePage from "./components/UserTablePage";
@@ -34,7 +35,11 @@ function App() {
           <Route
             path="*"
             element={
-              <LogInPage users={users} setSignedIn={setSignedIn}></LogInPage>
+              <LogInPage
+                users={users}
+                setSignedIn={setSignedIn}
+                setUsers={setUsers}
+              ></LogInPage>
             }
           />
         </Routes>
@@ -46,7 +51,9 @@ function App() {
       <Routes>
         <Route
           path="/config-table"
-          element={<ConfigTablePage></ConfigTablePage>}
+          element={
+            <ConfigTablePage setSignedIn={setSignedIn}></ConfigTablePage>
+          }
         />
         <Route path="/user-table" element={<UserTablePage></UserTablePage>} />
       </Routes>

@@ -80,8 +80,9 @@ const SignUpPage = ({ users, setUsers, currID, setCurrID }) => {
 
   return (
     <div className="signUpPage">
-      <h1 className="title">Create Account</h1>
+      <h1>Nexuni</h1>
       <div className="cardWrap">
+        <h2 className="title">Create Account</h2>
         <div className="basicInfo">
           <input
             className="inputField"

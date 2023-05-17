@@ -5,8 +5,8 @@ import Building from "../models/Building";
 import InsertCard from "./configTable/InsertCard";
 import UpdateCard from "./configTable/UpdateCard";
 import DeleteCard from "./configTable/DeleteCard";
-
-const ConfigTablePage = () => {
+import { useNavigate } from "react-router-dom";
+const ConfigTablePage = ({ setSignedIn }) => {
   const b1 = new Building(
     "SBT",
     "CBM Office",
@@ -41,7 +41,7 @@ const ConfigTablePage = () => {
   const [openInsert, setOpenInsert] = useState(null);
   const [openDelete, setOpenDelete] = useState(null);
   const [openUpdate, setOpenUpdate] = useState(null);
-
+  const navigate = useNavigate();
   const headerEntries = [
     "Building Id",
     "Buidling Description",
@@ -49,9 +49,18 @@ const ConfigTablePage = () => {
     "Room Id",
     "Room Description",
   ];
+  function logOut() {
+    setSignedIn(false);
+    navigate("/sign-in");
+    return;
+  }
   return (
-    <div>
-      {" "}
+    <div className="content">
+      <div className="options">
+        <button onClick={() => navigate("/user-table")}>User Table</button>
+        <button onClick={() => logOut()}>Log Out</button>
+      </div>
+
       <div className="table">
         <table>
           <Header entries={headerEntries} />
@@ -79,18 +88,18 @@ const ConfigTablePage = () => {
         tableData={configData}
         setTableData={setConfigData}
       />
-      {/* <UpdateCard
-        openInsert={openDelete}
-        setOpenInsert={setOpenDelete}
+      <UpdateCard
+        openUpdate={openUpdate}
+        setOpenUpdate={setOpenUpdate}
         tableData={configData}
         setTableData={setConfigData}
       />
       <DeleteCard
-        openInsert={openDelete}
-        setOpenInsert={setOpenDelete}
+        openDelete={openDelete}
+        setOpenDelete={setOpenDelete}
         tableData={configData}
         setTableData={setConfigData}
-      /> */}
+      />
     </div>
   );
 };

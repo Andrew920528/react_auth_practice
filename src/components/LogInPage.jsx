@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const LogInPage = ({ users, setSignedIn }) => {
+import ChangePwdPopUp from "./ChangePwdPopUp";
+const LogInPage = ({ users, setUsers, setSignedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [openChangePwd, setOpenChangePwd] = useState(false);
   const navigate = useNavigate();
 
   function logIn() {
@@ -26,10 +28,21 @@ const LogInPage = ({ users, setSignedIn }) => {
 
     alert("username or password not found");
   }
+  function changePassword() {
+    console.log("forgot password");
+    for (let user of users) {
+      for (let element in user) {
+        console.log(element + ": " + user[element]);
+      }
+    }
+    setOpenChangePwd(true);
+  }
+
   return (
     <div className="logInPage">
-      <h1 className="title">Hello</h1>
+      <h1>Nexuni</h1>
       <div className="cardWrap">
+        <h2 className="title">Welcome Back</h2>
         <div className="logInSection">
           <input
             className="inputField"
@@ -50,8 +63,6 @@ const LogInPage = ({ users, setSignedIn }) => {
           <button
             className="logInBtn"
             onClick={() => {
-              console.log("username: " + username);
-              console.log("password: " + password);
               logIn();
             }}
           >
@@ -59,7 +70,14 @@ const LogInPage = ({ users, setSignedIn }) => {
             Log In
           </button>
           <div>
-            <a className="forgotPwd" href="">
+            <a
+              className="forgotPwd"
+              href=""
+              onClick={(e) => {
+                e.preventDefault();
+                changePassword();
+              }}
+            >
               Forgot your password?
             </a>
           </div>
@@ -75,6 +93,13 @@ const LogInPage = ({ users, setSignedIn }) => {
           Create New Account
         </button>
       </div>
+
+      <ChangePwdPopUp
+        users={users}
+        setUsers={setUsers}
+        openChangePwd={openChangePwd}
+        setOpenChangePwd={setOpenChangePwd}
+      ></ChangePwdPopUp>
     </div>
   );
 };
