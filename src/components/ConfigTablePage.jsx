@@ -15,11 +15,12 @@ import axios from "axios";
 const ConfigTablePage = ({ setSignedIn }) => {
   // calling api
   const [configData, setConfigData] = useState([]);
+  const [openInsert, setOpenInsert] = useState(null);
+  const [openDelete, setOpenDelete] = useState(null);
+  const [openUpdate, setOpenUpdate] = useState(null);
   useEffect(() => {
     axios
       .get("http://210.24.187.227:5062", {
-        // headers: { "Access-Control-Allow-Origin": "*" },
-
         params: {
           service: "sensor",
           operation: "get_config",
@@ -38,9 +39,6 @@ const ConfigTablePage = ({ setSignedIn }) => {
       });
   }, []);
 
-  const [openInsert, setOpenInsert] = useState(null);
-  const [openDelete, setOpenDelete] = useState(null);
-  const [openUpdate, setOpenUpdate] = useState(null);
   const navigate = useNavigate();
   const headerEntries = [
     "Building Id",

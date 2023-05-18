@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PromptCard from "../PromptCard";
 import { RxCrossCircled } from "react-icons/rx";
+import { editBuilding } from "../../services/HttpService";
 
 const UpdateCard = ({ openUpdate, setOpenUpdate, tableData, setTableData }) => {
   const [id, setId] = useState("");
@@ -10,12 +11,11 @@ const UpdateCard = ({ openUpdate, setOpenUpdate, tableData, setTableData }) => {
   const [roomDesc, setRoomDesc] = useState("");
   function submit() {
     let newTableData = [...tableData];
-    newTableData[openUpdate].building_id = id;
+
     newTableData[openUpdate].building_description = buildingDesc;
-    newTableData[openUpdate].room_id = roomId;
     newTableData[openUpdate].floor = floor;
     newTableData[openUpdate].room_description = roomDesc;
-
+    editBuilding(newTableData[openUpdate]._id, newTableData[openUpdate]);
     setTableData(newTableData);
     alert("Successfully updated!");
     setOpenUpdate(null);
@@ -44,7 +44,7 @@ const UpdateCard = ({ openUpdate, setOpenUpdate, tableData, setTableData }) => {
       <PromptCard
         id={"update-card"}
         width={40}
-        height={75}
+        height={60}
         padding={"10px"}
         promptCardData={
           openUpdate != null && openUpdate >= 0 && openUpdate < tableData.length
@@ -66,15 +66,6 @@ const UpdateCard = ({ openUpdate, setOpenUpdate, tableData, setTableData }) => {
           <div className="mainWindow updateWindow">
             <div className="prompt-content building-prompt-content">
               <div className="prompt-input">
-                <label htmlFor=""> Building Id </label>
-                <input
-                  type="text"
-                  onChange={(event) => setId(event.target.value)}
-                  value={id}
-                  placeholder="Building Id"
-                />
-              </div>
-              <div className="prompt-input">
                 <label htmlFor=""> Building Description </label>
                 <input
                   type="text"
@@ -92,15 +83,7 @@ const UpdateCard = ({ openUpdate, setOpenUpdate, tableData, setTableData }) => {
                   placeholder="Floor"
                 />
               </div>
-              <div className="prompt-input">
-                <label htmlFor=""> Room Id </label>
-                <input
-                  type="text"
-                  onChange={(event) => setRoomId(event.target.value)}
-                  value={roomId}
-                  placeholder="Room Id"
-                />
-              </div>
+
               <div className="prompt-input">
                 <label htmlFor=""> Room Description </label>
                 <input

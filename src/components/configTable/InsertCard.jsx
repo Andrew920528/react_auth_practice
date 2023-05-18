@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PromptCard from "../PromptCard";
 import Building from "../../models/Building";
 import { RxCrossCircled } from "react-icons/rx";
+import { addBuilding } from "../../services/HttpService";
 const InsertCard = ({ openInsert, setOpenInsert, tableData, setTableData }) => {
   const [id, setId] = useState("");
   const [buildingDesc, setBuildingDesc] = useState("");
@@ -12,8 +13,19 @@ const InsertCard = ({ openInsert, setOpenInsert, tableData, setTableData }) => {
   function submit() {
     let newTableData = [...tableData];
     let newB = new Building(id, buildingDesc, floor, roomId, roomDesc);
-    newTableData.push(newB);
+    let r = {
+      building_id: id,
+      building_description: buildingDesc,
+      floor: floor,
+      room_id: roomId,
+      room_description: roomDesc,
+      sensor_component_list: "[]",
+      device_ip: "172.30.0.39",
+    };
+
+    newTableData.push(r);
     setTableData(newTableData);
+    addBuilding(r);
     alert("Successfully inserted");
 
     setId("");

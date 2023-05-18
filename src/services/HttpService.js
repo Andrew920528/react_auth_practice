@@ -32,15 +32,39 @@ export function SendRequest() {
   //   console.log("123132132131");
   // }, []);
 }
-export async function handleUpdata() {
+
+export async function addBuilding(r) {
   let data = {
     service: "sensor",
-    operation: "add_comments",
-    star: 2,
-    room_id: "Taipei1F",
-    comments: "test",
+    operation: "add_config",
+    dump_list: [r],
   };
-  const res = await axios.post("https://10.0.0.172:5063", data);
+  const res = await axios.post("http://210.24.187.227:5062", data);
+  console.log(res.data);
+}
+
+export async function deleteBuilding(id) {
+  let data = {
+    service: "sensor",
+    operation: "delete_config",
+    _id: id,
+    update_sensor_id_list: [],
+  };
+  const res = await axios.post("http://210.24.187.227:5062", data);
+  console.log(res.data);
+}
+
+export async function editBuilding(id, newData) {
+  let data = {
+    service: "sensor",
+    operation: "update_config",
+    _id: id,
+    building_description: newData.building_description,
+    floor: newData.floor,
+    room_description: newData.room_description,
+  };
+
+  const res = await axios.post("http://210.24.187.227:5062", data);
   console.log(res.data);
 }
 

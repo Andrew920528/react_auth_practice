@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import PromptCard from "../PromptCard";
 import { RxCrossCircled } from "react-icons/rx";
-
+import { deleteBuilding } from "../../services/HttpService";
+import Building from "../../models/Building";
 const DeleteCard = ({ openDelete, setOpenDelete, tableData, setTableData }) => {
   function deleteEntry(ind) {
     let newTableData = [...tableData];
 
+    if (tableData[0].floor) {
+      deleteBuilding(tableData[ind]._id);
+    }
     newTableData.splice(ind, 1);
     setTableData(newTableData);
     alert("Successfully deleted!");
