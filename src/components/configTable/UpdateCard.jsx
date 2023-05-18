@@ -10,11 +10,11 @@ const UpdateCard = ({ openUpdate, setOpenUpdate, tableData, setTableData }) => {
   const [roomDesc, setRoomDesc] = useState("");
   function submit() {
     let newTableData = [...tableData];
-    newTableData[openUpdate].id = id;
-    newTableData[openUpdate].buildingDesc = buildingDesc;
-    newTableData[openUpdate].roomId = roomId;
+    newTableData[openUpdate].building_id = id;
+    newTableData[openUpdate].building_description = buildingDesc;
+    newTableData[openUpdate].room_id = roomId;
     newTableData[openUpdate].floor = floor;
-    newTableData[openUpdate].roomDesc = roomDesc;
+    newTableData[openUpdate].room_description = roomDesc;
 
     setTableData(newTableData);
     alert("Successfully updated!");
@@ -26,11 +26,11 @@ const UpdateCard = ({ openUpdate, setOpenUpdate, tableData, setTableData }) => {
       openUpdate >= 0 &&
       openUpdate < tableData.length
     ) {
-      setId(tableData[openUpdate].id);
-      setBuildingDesc(tableData[openUpdate].buildingDesc);
-      setRoomId(tableData[openUpdate].roomId);
+      setId(tableData[openUpdate].building_id);
+      setBuildingDesc(tableData[openUpdate].building_description);
+      setRoomId(tableData[openUpdate].room_id);
       setFloor(tableData[openUpdate].floor);
-      setRoomDesc(tableData[openUpdate].roomDesc);
+      setRoomDesc(tableData[openUpdate].room_description);
     } else {
       setId("");
       setBuildingDesc("");

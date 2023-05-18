@@ -8,6 +8,9 @@ const ConfigRow = ({ rowData, setOpenUpdate, setOpenDelete, index }) => {
       <tr>
         {Object.keys(rowData).map((data, ind) => {
           if (data == "password") return;
+          if (data == "_id") return;
+          if (data == "sensor_component_list") return;
+          if (data == "device_ip") return;
           let display;
           if (data == "lastModified") {
             display = format(rowData[data], "hh:mm:ss - yyyy/MM/dd (EEE)");

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import ConfigRow from "./configTable/ConfigRow";
 import Building from "../models/Building";
@@ -9,38 +9,34 @@ import { useNavigate } from "react-router-dom";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { BiTable } from "react-icons/bi";
-
+import HttpService from "../services/HttpService";
+import { SendRequest } from "../services/HttpService";
+import axios from "axios";
 const ConfigTablePage = ({ setSignedIn }) => {
-  const b1 = new Building(
-    "SBT",
-    "CBM Office",
-    "Office",
-    "SBT-B1-M01",
-    "Office Female Room"
-  );
-  const b2 = new Building(
-    "KingCenter",
-    "KingCenter",
-    "2",
-    "KC-2F-M01",
-    "2F Make Room 01"
-  );
-  const b3 = new Building(
-    "SBT2",
-    "CBM Office",
-    "Office",
-    "SBT-B1-M01",
-    "Office Female Room"
-  );
-  const b4 = new Building(
-    "KingCenter2",
-    "KingCenter",
-    "2",
-    "KC-2F-M01",
-    "2F Make Room 01"
-  );
+  // calling api
+  const [configData, setConfigData] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://210.24.187.227:5062", {
+        // headers: { "Access-Control-Allow-Origin": "*" },
 
-  const [configData, setConfigData] = useState([b1, b2, b3, b4]);
+        params: {
+          service: "sensor",
+          operation: "get_config",
+        },
+      })
+      .then((res) => {
+        if (res.data.indicator) {
+          setConfigData(res.data.message);
+          console.log(res.data);
+        } else {
+          alert(res.data.message);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const [openInsert, setOpenInsert] = useState(null);
   const [openDelete, setOpenDelete] = useState(null);

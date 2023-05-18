@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ChangePwdPopUp from "./ChangePwdPopUp";
+
 const LogInPage = ({ users, setUsers, setSignedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -8,8 +9,6 @@ const LogInPage = ({ users, setUsers, setSignedIn }) => {
   const navigate = useNavigate();
 
   function logIn() {
-    console.log(users.length);
-    console.log(users[0]);
     // invalid username or password
     if (username.trim() == "" || password.trim() == "") {
       alert("invalid username or password");
@@ -42,7 +41,7 @@ const LogInPage = ({ users, setUsers, setSignedIn }) => {
 
   return (
     <div className="logInPage">
-      <h1>Nexuni</h1>
+      <h1>Welcom Back</h1>
       <div className="cardWrap">
         <h2 className="title">Welcome Back</h2>
         <div className="logInSection">
@@ -68,7 +67,6 @@ const LogInPage = ({ users, setUsers, setSignedIn }) => {
               logIn();
             }}
           >
-            {" "}
             Log In
           </button>
           <div>

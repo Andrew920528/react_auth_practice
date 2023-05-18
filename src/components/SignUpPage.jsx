@@ -68,7 +68,7 @@ const SignUpPage = ({ users, setUsers, currID, setCurrID, signedIn }) => {
       new Date()
     );
     setCurrID(currID + 1);
-    console.log(newUser.id);
+
     let temp = [...users];
     temp.push(newUser);
     setUsers(temp);
