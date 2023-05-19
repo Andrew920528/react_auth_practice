@@ -92,6 +92,11 @@ table tr:last-child td:last-child {
   height: 20px;
 }
 
+.btnInTable:hover {
+  color: #30866a;
+  cursor: pointer;
+}
+
 .table {
   max-height: 300px;
   overflow-y: scroll;

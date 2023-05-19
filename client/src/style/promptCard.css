@@ -99,4 +99,93 @@
   border-width: 0px;
   font-size: large;
 }
+
+.mainWindow div .btn:hover {
+  cursor: pointer;
+}
+
+.prompt-input {
+  margin-top: 10px;
+}
+
+.prompt-input input {
+  padding: 10px 10px;
+  line-height: 28px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: large;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.updateWindow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.updateWindow .basicInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-bottom: 30px;
+}
+
+.updateWindow .basicInfo .prompt-input {
+  width: 40%;
+}
+
+.updateWindow .basicInfo .age {
+  width: 15%;
+}
+
+.updateWindow .building-prompt-content .prompt-input {
+  margin-top: 10px;
+}
+
+.updateWindow .building-prompt-content .prompt-input input {
+  padding: 5px 5px;
+  line-height: 20px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  font-weight: bold;
+  font-size: medium;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.building-submit {
+  margin-top: 20px;
+}
+
+.delete p {
+  color: gray;
+}
+
+.delete button {
+  padding: 10px 10px;
+  line-height: 28px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  background-color: #e3ff7d;
+  border-radius: 5px;
+  border-width: 0px;
+  font-size: large;
+}
+
+.delete button:hover {
+  cursor: pointer;
+}
 /*# sourceMappingURL=promptCard.css.map */

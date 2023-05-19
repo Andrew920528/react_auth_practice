@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import SensorBtn from "./sensorPage/SensorBtn";
-import Sensor from "../models/Sensor";
 import SensorInfo from "./sensorPage/SensorInfo";
 import { format } from "date-fns";
 
@@ -9,8 +8,44 @@ const EventSourceTest = () => {
   const [selectedSensor, setSelectedSensor] = useState(null);
 
   function handleMessageChange(message) {
-    console.log("new message", message);
-    setSensors(message);
+    if (!message) return;
+    let temp = [...sensors];
+    console.log("temp", temp);
+    if (message.operation === "add") {
+      let obj = {};
+      obj.id = message.id;
+      obj.type = message.type;
+      obj.status = message.status;
+      obj.lastUpdate = new Date();
+
+      temp.push(obj);
+      console.log("temp", temp);
+      setSensors(temp);
+      return;
+    } else if (message.operation === "update") {
+      for (let i in temp) {
+        if (temp[i].id === message.id) {
+          temp[i].type = message.type;
+          temp[i].status = message.status;
+          temp[i].lastUpdate = new Date();
+          setSensors(temp);
+          break;
+        }
+      }
+
+      return;
+    } else if (message.operation === "delete") {
+      const id = message.id;
+
+      for (let i in temp) {
+        if (temp[i].id === id) {
+          temp.splice(i, 1);
+          setSensors(temp);
+          break;
+        }
+      }
+      return;
+    }
   }
 
   useEffect(() => {
@@ -24,7 +59,6 @@ const EventSourceTest = () => {
     const sse = new EventSource(EVENT_URL + "?userId=" + USER_ID);
 
     sse.onmessage = (event) => {
-      console.log("event", event);
       let message = JSON.parse(event.data);
       handleMessageChange(message);
     };
@@ -37,7 +71,7 @@ const EventSourceTest = () => {
       console.log("close");
       sse.close();
     };
-  }, []);
+  }, [sensors]);
 
   return (
     <div>
@@ -59,10 +93,10 @@ const EventSourceTest = () => {
           </div>
           {sensors.map((data, ind) => {
             return (
-              <div className="sensorRow">
+              <div key={"sensorRow" + ind} className="sensorRow">
                 <div className="property status">
                   <SensorBtn
-                    key={"btn" + ind}
+                    // key={"btn" + ind}
                     sensor={data}
                     setSelectedSensor={setSelectedSensor}
                   ></SensorBtn>

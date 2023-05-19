@@ -80,6 +80,10 @@ body {
   font-size: large;
 }
 
+.cardWrap .logInSection .logInBtn:hover {
+  cursor: pointer;
+}
+
 .cardWrap .logInSection .forgotPwd {
   color: #6e9d00;
   text-decoration: none;
@@ -108,5 +112,9 @@ body {
   border-radius: 5px;
   border-width: 0px;
   font-size: large;
+}
+
+.cardWrap .createAccountBtn:hover {
+  cursor: pointer;
 }
 /*# sourceMappingURL=loginCard.css.map */
