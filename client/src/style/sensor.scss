@@ -4,11 +4,13 @@
   align-items: stretch;
   text-align: left;
   padding: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
   background-color: white;
   margin: 10%;
   border-radius: 7px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  width: 40%;
+  width: 50%;
   min-width: 300px;
   .titles {
     display: flex;
@@ -17,11 +19,11 @@
     justify-content: space-between;
     .title {
       font-weight: 600;
-      font-size: 30px;
+      font-size: 35px;
     }
     .subtitle {
       font-weight: 400;
-      font-size: 15px;
+      font-size: 18px;
       color: gray;
     }
   }
@@ -45,9 +47,10 @@
         padding: 5px;
         flex: 1;
         padding-bottom: 5px;
-        font-size: 15%;
+        font-size: 15px;
       }
       .header {
+        font-weight: bold;
         background-color: rgb(228, 243, 190);
       }
       .status,

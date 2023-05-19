@@ -54,10 +54,10 @@ app.get("/EventSource", async (req, res) => {
   // connectClient(req, res);
 
   console.log("connect to client", req.query);
-  if (!req.query.userId || req.query.userId == "") {
+  if (!req.query.userId) {
     // we probably want to generate a user id based on account
 
-    throw new Error("request param does not include userId");
+    console.log("request param does not include userId");
   }
   // 將每一個網頁端命名並存在 clients 裡面
   const clientId = `${req.query.userId}_${Date.now()}`;
@@ -92,76 +92,44 @@ function sendEventsToAll(newEventData) {
   });
 }
 
-app.post("/events", async (req, res) => {
+app.post("/sensor", async (req, res) => {
   // 外部 call 這個 post, 所傳的資料會包含在 request 物件的 body
-  const newEventData = req.body;
-  console.log(newEventData);
-
-  // 回傳給外部
-  res.json({ indicator: true, message: "Successfully" });
-
-  // 回傳給所有跟這個伺服器連線的前端
-  return sendEventsToAll(newEventData);
-});
-
-app.get("/getSensor", (req, res) => {
-  res.json(eventData);
-});
-
-app.post("/addSensor", async (req, res) => {
-  // 外部 call 這個 post, 所傳的資料會包含在 request 物件的 body
-  let obj = {};
-  obj.id = req.body.id;
-  obj.type = req.body.type;
-  obj.status = req.body.status;
-  obj.lastUpdate = new Date();
-  eventData.push(obj);
-  console.log("After add sensor request", eventData);
-
-  // 回傳給外部
-  res.json({ indicator: true, message: "Successfully" });
-
-  // 回傳給所有跟這個伺服器連線的前端
-  return sendEventsToAll(eventData);
-});
-
-app.post("/updateSensor", async (req, res) => {
-  // 外部 call 這個 post, 所傳的資料會包含在 request 物件的 body
-
-  for (let i in eventData) {
-    if (eventData[i].id == req.body.id) {
-      eventData[i].type = req.body.type;
-      eventData[i].status = req.body.status;
-      eventData[i].lastUpdate = new Date();
-      break;
+  if (req.body.operation === "add") {
+    let obj = {};
+    obj.id = req.body.id;
+    obj.type = req.body.type;
+    obj.status = req.body.status;
+    obj.lastUpdate = new Date();
+    eventData.push(obj);
+    console.log("After add sensor request", eventData);
+    res.json({ indicator: true, message: "Successfully" });
+  } else if (req.body.operation === "update") {
+    for (let i in eventData) {
+      if (eventData[i].id == req.body.id) {
+        eventData[i].type = req.body.type;
+        eventData[i].status = req.body.status;
+        eventData[i].lastUpdate = new Date();
+        break;
+      }
     }
-  }
-  console.log("After update sensor request", eventData);
 
-  // 回傳給外部
-  res.json({ indicator: true, message: "Successfully" });
+    // 回傳給外部
+    res.json({ indicator: true, message: "Successfully" });
+  } else if (req.body.operation === "delete") {
+    const id = req.body.id;
 
-  // 回傳給所有跟這個伺服器連線的前端
-  return sendEventsToAll(eventData);
-});
-
-app.post("/deleteSensor", async (req, res) => {
-  // 外部 call 這個 post, 所傳的資料會包含在 request 物件的 body
-  const id = req.body.id;
-
-  for (let i in eventData) {
-    if (eventData[i].id == id) {
-      eventData.splice(i, 1);
-      break;
+    for (let i in eventData) {
+      if (eventData[i].id == id) {
+        eventData.splice(i, 1);
+        break;
+      }
     }
+
+    // 回傳給外部
+    res.json({ indicator: true, message: "Successfully" });
   }
-
-  console.log("After delete sensor request", eventData);
-
-  // 回傳給外部
-  res.json({ indicator: true, message: "Successfully" });
-
   // 回傳給所有跟這個伺服器連線的前端
+  console.log("After request", eventData);
   return sendEventsToAll(eventData);
 });
 

@@ -61,6 +61,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="event-source-test" element={<EventSourceTest />} />
+
         <Route
           path="sign-up"
           element={

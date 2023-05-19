@@ -7,10 +7,12 @@ import { format } from "date-fns";
 const EventSourceTest = () => {
   const [sensors, setSensors] = useState([]);
   const [selectedSensor, setSelectedSensor] = useState(null);
+
   function handleMessageChange(message) {
     console.log("new message", message);
     setSensors(message);
   }
+
   useEffect(() => {
     console.log("sensors", sensors);
   }, [sensors]);
