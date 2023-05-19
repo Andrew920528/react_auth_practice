@@ -2,36 +2,71 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  text-align: center;
+  text-align: left;
   padding: 20px;
   background-color: white;
   margin: 10%;
   border-radius: 7px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  .title {
-    font-weight: 600;
-    font-size: 40px;
+  width: 40%;
+  min-width: 300px;
+  .titles {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: space-between;
+    .title {
+      font-weight: 600;
+      font-size: 30px;
+    }
+    .subtitle {
+      font-weight: 400;
+      font-size: 15px;
+      color: gray;
+    }
   }
   hr {
-    border-top: 1px solid grey;
+    border-top: 1px solid;
+    border-color: rgb(239, 239, 239);
+    margin-left: 0;
+    margin-right: 0;
   }
   .sensors {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20px;
+    flex-direction: column;
+    .sensorRow {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 5px;
+      justify-content: start;
+      align-items: center;
+      .property,
+      .header {
+        padding: 5px;
+        flex: 1;
+        padding-bottom: 5px;
+        font-size: 15%;
+      }
+      .header {
+        background-color: rgb(228, 243, 190);
+      }
+      .status,
+      .id {
+        flex: 0.5;
+      }
+    }
   }
   .sensorBtn {
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
     // background-color: rgb(236, 255, 127);
     border-style: none;
     font-weight: bold;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease-in-out;
   }
   .sensorBtn:hover {
     cursor: pointer;
-    transform: scale(1.05);
+    transform: scale(1.2);
   }
 }

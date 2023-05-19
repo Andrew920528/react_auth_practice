@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import SensorBtn from "./sensorPage/SensorBtn";
 import Sensor from "../models/Sensor";
 import SensorInfo from "./sensorPage/SensorInfo";
+import { format } from "date-fns";
+
 const EventSourceTest = () => {
   const [sensors, setSensors] = useState([]);
   const [selectedSensor, setSelectedSensor] = useState(null);
@@ -38,18 +40,43 @@ const EventSourceTest = () => {
   return (
     <div>
       <div className="sensorPage">
-        <div className="title"> Room A sensors</div>
-        <div>Number of sensors: {sensors.length}</div>
+        <div className="titles">
+          <div className="title"> Room A sensors</div>
+          <div className="subtitle">Number of sensors: {sensors.length}</div>
+        </div>
+
         <hr />
 
         <div className="sensors">
+          <div className="sensorRow">
+            <div className="header status">Status</div>
+            <div className="header id">Id</div>
+
+            <div className="header">Type</div>
+            <div className="header"> Last Updated</div>
+          </div>
           {sensors.map((data, ind) => {
             return (
-              <SensorBtn
-                key={"btn" + ind}
-                sensor={data}
-                setSelectedSensor={setSelectedSensor}
-              ></SensorBtn>
+              <div className="sensorRow">
+                <div className="property status">
+                  <SensorBtn
+                    key={"btn" + ind}
+                    sensor={data}
+                    setSelectedSensor={setSelectedSensor}
+                  ></SensorBtn>
+                </div>
+
+                <div className="property id">{data.id}</div>
+
+                <div className="property">{data.type}</div>
+
+                <div className="property">
+                  {format(
+                    Date.parse(data.lastUpdate),
+                    "hh:mm:ss - yyyy/MM/dd (EEE)"
+                  )}
+                </div>
+              </div>
             );
           })}
         </div>

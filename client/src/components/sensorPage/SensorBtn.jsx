@@ -12,7 +12,7 @@ const SensorBtn = ({ sensor, setSelectedSensor }) => {
       style={{ backgroundColor: colorCoverter[sensor.status] }}
       onClick={() => setSelectedSensor(sensor)}
     >
-      {"Sensor " + sensor.id} <br />
+      {/* {"Sensor " + sensor.id} <br /> */}
     </div>
   );
 };
