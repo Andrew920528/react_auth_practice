@@ -2,55 +2,32 @@ import React, { useEffect, useState } from "react";
 import SensorBtn from "./sensorPage/SensorBtn";
 import SensorInfo from "./sensorPage/SensorInfo";
 import { format } from "date-fns";
-
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectSensorList,
+  addSensorList,
+  updateSensorList,
+  deleteSensorList,
+} from "../features/slices/sensorListSlice";
 const EventSourceTest = () => {
-  const [sensors, setSensors] = useState([]);
   const [selectedSensor, setSelectedSensor] = useState(null);
 
+  const sensorList = useSelector(selectSensorList);
+  const dispatch = useDispatch();
   function handleMessageChange(message) {
     if (!message) return;
-    let temp = [...sensors];
-    console.log("temp", temp);
-    if (message.operation === "add") {
-      let obj = {};
-      obj.id = message.id;
-      obj.type = message.type;
-      obj.status = message.status;
-      obj.lastUpdate = new Date();
 
-      temp.push(obj);
-      console.log("temp", temp);
-      setSensors(temp);
+    if (message.operation === "add") {
+      dispatch(addSensorList(message));
       return;
     } else if (message.operation === "update") {
-      for (let i in temp) {
-        if (temp[i].id === message.id) {
-          temp[i].type = message.type;
-          temp[i].status = message.status;
-          temp[i].lastUpdate = new Date();
-          setSensors(temp);
-          break;
-        }
-      }
-
+      dispatch(updateSensorList(message));
       return;
     } else if (message.operation === "delete") {
-      const id = message.id;
-
-      for (let i in temp) {
-        if (temp[i].id === id) {
-          temp.splice(i, 1);
-          setSensors(temp);
-          break;
-        }
-      }
+      dispatch(deleteSensorList(message));
       return;
     }
   }
-
-  useEffect(() => {
-    console.log("sensors", sensors);
-  }, [sensors]);
 
   // The url we are subscribing to
   const EVENT_URL = "http://localhost:3001/EventSource";
@@ -71,14 +48,14 @@ const EventSourceTest = () => {
       console.log("close");
       sse.close();
     };
-  }, [sensors]);
+  }, []);
 
   return (
     <div>
       <div className="sensorPage">
         <div className="titles">
           <div className="title"> Room A sensors</div>
-          <div className="subtitle">Number of sensors: {sensors.length}</div>
+          <div className="subtitle">Number of sensors: {sensorList.length}</div>
         </div>
 
         <hr />
@@ -91,7 +68,7 @@ const EventSourceTest = () => {
             <div className="header">Type</div>
             <div className="header"> Last Updated</div>
           </div>
-          {sensors.map((data, ind) => {
+          {sensorList.map((data, ind) => {
             return (
               <div key={"sensorRow" + ind} className="sensorRow">
                 <div className="property status">
