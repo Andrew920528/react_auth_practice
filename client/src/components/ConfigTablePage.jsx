@@ -12,31 +12,43 @@ import { BiTable } from "react-icons/bi";
 import HttpService from "../services/HttpService";
 import { SendRequest } from "../services/HttpService";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  configListSelector,
+  fetchConfigList,
+} from "../features/slices/configListSlice";
 const ConfigTablePage = ({ setSignedIn }) => {
   // calling api
   const [configData, setConfigData] = useState([]);
   const [openInsert, setOpenInsert] = useState(null);
   const [openDelete, setOpenDelete] = useState(null);
   const [openUpdate, setOpenUpdate] = useState(null);
+  const dispatch = useDispatch();
+  const configList = useSelector(configListSelector);
+
   useEffect(() => {
-    axios
-      .get("http://210.24.187.227:5062", {
-        params: {
-          service: "sensor",
-          operation: "get_config",
-        },
-      })
-      .then((res) => {
-        if (res.data.indicator) {
-          setConfigData(res.data.message);
-          console.log(res.data);
-        } else {
-          alert(res.data.message);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    dispatch(fetchConfigList()).then((res) => {
+      //console.log(res);
+    });
+
+    // axios
+    //   .get("http://210.24.187.227:5062", {
+    //     params: {
+    //       service: "sensor",
+    //       operation: "get_config",
+    //     },
+    //   })
+    //   .then((res) => {
+    //     if (res.data.indicator) {
+    //       setConfigData(res.data.message);
+    //       console.log(res.data);
+    //     } else {
+    //       alert(res.data.message);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   }, []);
 
   const navigate = useNavigate();
@@ -72,7 +84,7 @@ const ConfigTablePage = ({ setSignedIn }) => {
         <table>
           <Header entries={headerEntries} />
           <tbody>
-            {configData.map((element, index) => {
+            {configList.map((element, index) => {
               return (
                 <ConfigRow
                   key={index + "tableData"}

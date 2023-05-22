@@ -31,7 +31,10 @@ const ConfigRow = ({ rowData, setOpenUpdate, setOpenDelete, index }) => {
           <div className="btn">
             <MdDeleteForever
               className="btnInTable"
-              onClick={() => setOpenDelete(index)}
+              onClick={() => {
+                setOpenDelete(index);
+                console.log("delete" + index);
+              }}
             ></MdDeleteForever>
           </div>
         </td>

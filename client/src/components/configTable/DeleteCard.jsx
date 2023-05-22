@@ -3,13 +3,25 @@ import PromptCard from "../PromptCard";
 import { RxCrossCircled } from "react-icons/rx";
 import { deleteBuilding } from "../../services/HttpService";
 import Building from "../../models/Building";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  configListSelector,
+  deleteConfigList,
+} from "../../features/slices/configListSlice";
 const DeleteCard = ({ openDelete, setOpenDelete, tableData, setTableData }) => {
-  function deleteEntry(ind) {
-    let newTableData = [...tableData];
+  const dispatch = useDispatch();
+  const configList = useSelector(configListSelector);
 
-    if (tableData[0].floor) {
-      deleteBuilding(tableData[ind]._id);
+  function deleteEntry(ind) {
+    console.log("submit delete: " + ind);
+
+    if (configList[0].floor) {
+      deleteBuilding(configList[ind]._id);
     }
+
+    dispatch(deleteConfigList({ index: ind }));
+    // for user table
+    let newTableData = [...tableData];
     newTableData.splice(ind, 1);
     setTableData(newTableData);
     alert("Successfully deleted!");
@@ -22,9 +34,7 @@ const DeleteCard = ({ openDelete, setOpenDelete, tableData, setTableData }) => {
         width={40}
         height={30}
         padding={"10px"}
-        promptCardData={
-          openDelete != null && openDelete >= 0 && openDelete < tableData.length
-        }
+        promptCardData={openDelete != null && openDelete >= 0}
       >
         <div className="cardContent delete">
           <div className="topRow">

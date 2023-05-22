@@ -2,39 +2,50 @@ import React, { useState, useEffect } from "react";
 import PromptCard from "../PromptCard";
 import { RxCrossCircled } from "react-icons/rx";
 import { editBuilding } from "../../services/HttpService";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  configListSelector,
+  updateConfigList,
+} from "../../features/slices/configListSlice";
 
-const UpdateCard = ({ openUpdate, setOpenUpdate, tableData, setTableData }) => {
-  const [id, setId] = useState("");
+const UpdateCard = ({ openUpdate, setOpenUpdate }) => {
   const [buildingDesc, setBuildingDesc] = useState("");
-  const [roomId, setRoomId] = useState("");
+
   const [floor, setFloor] = useState("");
   const [roomDesc, setRoomDesc] = useState("");
-  function submit() {
-    let newTableData = [...tableData];
 
-    newTableData[openUpdate].building_description = buildingDesc;
-    newTableData[openUpdate].floor = floor;
-    newTableData[openUpdate].room_description = roomDesc;
-    editBuilding(newTableData[openUpdate]._id, newTableData[openUpdate]);
-    setTableData(newTableData);
+  const dispatch = useDispatch();
+  const configTable = useSelector(configListSelector);
+  function submit() {
+    let newData = {
+      index: openUpdate,
+      building_description: buildingDesc,
+      floor: floor,
+      room_description: roomDesc,
+    };
+    editBuilding(configTable[openUpdate]._id, newData);
+
+    dispatch(
+      updateConfigList({
+        index: openUpdate,
+        buildingDesc: buildingDesc,
+        floor: floor,
+        roomDesc: roomDesc,
+      })
+    );
+
     alert("Successfully updated!");
     setOpenUpdate(null);
   }
   useEffect(() => {
-    if (
-      openUpdate != null &&
-      openUpdate >= 0 &&
-      openUpdate < tableData.length
-    ) {
-      setId(tableData[openUpdate].building_id);
-      setBuildingDesc(tableData[openUpdate].building_description);
-      setRoomId(tableData[openUpdate].room_id);
-      setFloor(tableData[openUpdate].floor);
-      setRoomDesc(tableData[openUpdate].room_description);
+    if (openUpdate != null && openUpdate >= 0) {
+      setBuildingDesc(configTable[openUpdate].building_description);
+
+      setFloor(configTable[openUpdate].floor);
+      setRoomDesc(configTable[openUpdate].room_description);
     } else {
-      setId("");
       setBuildingDesc("");
-      setRoomId("");
+
       setFloor("");
       setRoomDesc("");
     }
@@ -47,7 +58,9 @@ const UpdateCard = ({ openUpdate, setOpenUpdate, tableData, setTableData }) => {
         height={60}
         padding={"10px"}
         promptCardData={
-          openUpdate != null && openUpdate >= 0 && openUpdate < tableData.length
+          openUpdate != null &&
+          openUpdate >= 0 &&
+          openUpdate < configTable.length
         }
       >
         <div className="cardContent">
