@@ -4,7 +4,7 @@ import "./App.scss";
 import "./style/loginCard.scss";
 import "./style/signUpPage.scss";
 import "./style/promptCard.scss";
-import "./style/tablePage.scss";
+
 import "./style/sensor.scss";
 import LogInPage from "./components/LogInPage";
 import User from "./models/User";
@@ -12,6 +12,7 @@ import UserTablePage from "./components/UserTablePage";
 import SignUpPage from "./components/SignUpPage";
 import ConfigTablePage from "./components/ConfigTablePage";
 import EventSourceTest from "./components/EventSourceTest";
+import PlayGround from "./components/PlayGround";
 function App() {
   const testUser = new User(0, "a", "a", "Bro", "Him", 30, new Date());
   const user1 = new User(
@@ -32,6 +33,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="event-source-test" element={<EventSourceTest />} />
+          <Route path="playground" element={<PlayGround />} />
           <Route
             path="sign-up"
             element={
@@ -43,6 +45,7 @@ function App() {
               ></SignUpPage>
             }
           />
+
           <Route
             path="*"
             element={

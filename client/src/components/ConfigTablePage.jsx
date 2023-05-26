@@ -12,6 +12,7 @@ import { BiTable } from "react-icons/bi";
 import HttpService from "../services/HttpService";
 import { SendRequest } from "../services/HttpService";
 import axios from "axios";
+import "../style/tablePage.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
   configListSelector,
@@ -81,7 +82,7 @@ const ConfigTablePage = ({ setSignedIn }) => {
       </div>
 
       <div className="table">
-        <table>
+        <table className="t">
           <Header entries={headerEntries} />
           <tbody>
             {configList.map((element, index) => {

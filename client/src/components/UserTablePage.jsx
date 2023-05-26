@@ -5,7 +5,7 @@ import { RiLogoutCircleRLine } from "react-icons/ri";
 import { BiTable } from "react-icons/bi";
 import Header from "./Header";
 import ConfigRow from "./configTable/ConfigRow";
-
+import "../style/tablePage.scss";
 import UpdateCard from "./userTable/UpdateCard";
 import DeleteCard from "./configTable/DeleteCard";
 const UserTablePage = ({ users, setUsers, setSignedIn }) => {
@@ -45,7 +45,7 @@ const UserTablePage = ({ users, setUsers, setSignedIn }) => {
       </div>
 
       <div className="table">
-        <table>
+        <table className="t">
           <Header entries={headerEntries} />
           <tbody>
             {users.map((element, index) => {

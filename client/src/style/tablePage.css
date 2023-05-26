@@ -4,11 +4,11 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
   gap: 20px;
   width: 60%;
   margin-left: auto;
@@ -63,20 +63,20 @@ table tr:last-child td:last-child {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   background-color: #e3ff7d;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   border-radius: 7px;
   padding: 15px;
   gap: 5px;
   -webkit-box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.124);
-          box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.124);
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.124);
   font-weight: 600;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -99,13 +99,13 @@ table tr:last-child td:last-child {
 
 .table {
   max-height: 300px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .rectBtn:hover {
   cursor: pointer;
   -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .insertBtn {
@@ -120,12 +120,12 @@ table tr:last-child td:last-child {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   gap: 30px;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .options .rightBtns {
@@ -135,8 +135,9 @@ table tr:last-child td:last-child {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   gap: 20px;
 }
+
 /*# sourceMappingURL=tablePage.css.map */

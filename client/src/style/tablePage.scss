@@ -12,7 +12,7 @@
   background-color: white;
 }
 
-table {
+.t {
   margin-left: auto;
   margin-right: auto;
   border-collapse: separate;
@@ -74,7 +74,7 @@ table {
 
 .table {
   max-height: 300px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .rectBtn:hover {

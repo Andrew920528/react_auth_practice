@@ -1,0 +1,22 @@
+.rectButton {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(227, 255, 125);
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  padding: 10px;
+  gap: 5px;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.124);
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.rectButton:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
