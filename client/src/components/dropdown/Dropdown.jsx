@@ -1,9 +1,8 @@
 import { React, useEffect, useState } from "react";
 import "./Dropdown.scss";
-const Dropdown = ({ setValue, forceClose }) => {
+const Dropdown = ({ selected, setSelected, options, forceClose }) => {
   // for dropdown
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState("");
 
   useEffect(() => {
     if (forceClose) setOpen(false);
@@ -53,10 +52,13 @@ const Dropdown = ({ setValue, forceClose }) => {
         }`}
       >
         <ul>
-          <DropdownItem text={"Option 1"}></DropdownItem>
+          {options.map((value, ind) => (
+            <DropdownItem key={"dropdown" + ind} text={value}></DropdownItem>
+          ))}
+          {/* <DropdownItem text={"Option 1"}></DropdownItem>
           <DropdownItem text={"Option 2"}></DropdownItem>
           <DropdownItem text={"Option 3"}></DropdownItem>
-          <DropdownItem text={"Option 4"}></DropdownItem>
+          <DropdownItem text={"Option 4"}></DropdownItem> */}
         </ul>
       </div>
     </div>

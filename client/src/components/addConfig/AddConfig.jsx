@@ -17,14 +17,6 @@ import {
 import AddSensorRow from "./AddSensorRow";
 const AddConfig = () => {
   const [step, setStep] = useState(0);
-  // step 1 states
-  const [newBuilding, setNewBuilding] = useState("");
-  const [option, setOption] = useState(0);
-  const [forceClose, setForceClose] = useState(false);
-
-  // step 3 states
-  const [sensors, setSensors] = useState([]);
-
   function nextStep() {
     const nextStep = (step + 1) % 4;
     setStep(nextStep);
@@ -36,11 +28,24 @@ const AddConfig = () => {
     setStep(nextStep);
   }
 
+  // step 1 states
+  const [newBuilding, setNewBuilding] = useState("");
+  const [selectedBuilding, setSelectedBuilding] = useState("");
+
+  const [option, setOption] = useState(0); // decide to add new building or select from old
+  const [forceClose, setForceClose] = useState(false); // force close dropdown
+
+  // step 2 states
+  const [newRoom, setNewRoom] = useState({ id: "", name: "", floor: "" });
+
+  // step 3 states
+  const [sensors, setSensors] = useState([]);
   function addSensor() {
     let temp = [...sensors];
     temp.push({ id: "id", name: "name", type: "type" });
     setSensors(temp);
   }
+
   const step1 = (
     <div className="step1 stepPage">
       <div
@@ -61,7 +66,12 @@ const AddConfig = () => {
             option === 0 ? { pointerEvents: "auto" } : { pointerEvents: "none" }
           }
         >
-          <Dropdown forceClose={forceClose}></Dropdown>
+          <Dropdown
+            forceClose={forceClose}
+            selected={selectedBuilding}
+            options={["building 1", "building 2", "building 3", "building 4"]}
+            setSelected={setSelectedBuilding}
+          ></Dropdown>
         </div>
       </div>
       <h4 style={{ marginBottom: "5px" }}>Or</h4>
@@ -108,15 +118,33 @@ const AddConfig = () => {
     <div className="step2 stepPage">
       <div>
         <div className="header">Room ID (unique)</div>
-        <input type="text" placeholder="Room ID" />
+        <input
+          type="text"
+          placeholder="Room ID"
+          onChange={(e) => {
+            setNewRoom({ ...newRoom, id: e.target.value });
+          }}
+        />
       </div>
       <div>
         <div className="header">Room Name (unique)</div>
-        <input type="text" placeholder="Room Name" />
+        <input
+          type="text"
+          placeholder="Room Name"
+          onChange={(e) => {
+            setNewRoom({ ...newRoom, name: e.target.value });
+          }}
+        />
       </div>
       <div>
         <div className="header">Floor</div>
-        <input type="text" placeholder="Floor" />
+        <input
+          type="text"
+          placeholder="Floor"
+          onChange={(e) => {
+            setNewRoom({ ...newRoom, floor: e.target.value });
+          }}
+        />
       </div>
 
       <div className="btnWrapper">
@@ -187,6 +215,12 @@ const AddConfig = () => {
     "Done",
   ];
   const steps = [step1, step2, step3, step4];
+  const results = [
+    `${option === 0 ? selectedBuilding : newBuilding}`,
+    `Id: ${newRoom.id}, Name: ${newRoom.name}, Floor: ${newRoom.floor}`,
+    `Sensors added: ${sensors.length}`,
+    ``,
+  ];
   return (
     <div className="addConfigWrapper">
       <div className="header">
@@ -201,6 +235,7 @@ const AddConfig = () => {
               key={"Step" + index}
               index={index}
               title={stepsTitle[index]}
+              result={results[index]}
             >
               {element}
             </Step>

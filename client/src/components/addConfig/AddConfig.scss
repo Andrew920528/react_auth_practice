@@ -73,10 +73,21 @@
     }
     .step {
       flex: 9;
-      .stepTitle {
-        font-size: $stepIndicatorSize;
-        font-weight: bold;
+      .stepHeader {
+        display: flex;
+        flex-direction: row;
+        align-items: end;
+        gap: 10px;
         padding-bottom: $lineMinHeight;
+        width: 80%;
+        .stepTitle {
+          font-size: $stepIndicatorSize;
+          font-weight: bold;
+        }
+        .stepResult {
+          font-size: ($stepIndicatorSize * 0.8);
+          color: #919191;
+        }
       }
       .stepContent {
         transition: height 0.7s ease;

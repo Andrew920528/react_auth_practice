@@ -64,3 +64,7 @@ ul {
   transition: height 0.2s ease;
   overflow-y: hidden;
 }
+
+.dropdownItem a:hover {
+  cursor: default;
+}

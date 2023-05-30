@@ -1,0 +1,73 @@
+@mixin theme {
+  font-family: "Montsrrat" sans-serif;
+}
+
+$cardBorderRadius: 10px;
+$cardPadding: 20px 0px 20px 0px;
+$cardShadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+$contentMargin: 40px;
+$standardTransition: all 0.2s ease;
+$graphColor: #5baba0;
+:export {
+  graphColor: $graphColor;
+}
+
+// section Wrapper styling
+.sectionWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  width: 80%;
+  @include theme();
+  .title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 37px;
+    color: #000000;
+  }
+  .card {
+    width: 100%;
+    background: #ffffff;
+    box-shadow: $cardShadow;
+    border-radius: $cardBorderRadius;
+    padding: $cardPadding;
+    .cardHeader {
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      margin-left: $contentMargin;
+      .tab {
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        transition: $standardTransition;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+      .tab:hover {
+        cursor: pointer;
+        background-color: #e3e3e3;
+      }
+    }
+    .line {
+      height: 2px;
+      background-color: #979797;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .underline {
+      height: 5px;
+      background-color: $graphColor;
+      position: absolute;
+      transition: $standardTransition;
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+    .graphWrapper {
+      width: 100%;
+      height: 250px;
+    }
+  }
+}
