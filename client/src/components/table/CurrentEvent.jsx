@@ -1,4 +1,5 @@
 import React from "react";
+import DisplayTable from "./DisplayTable";
 
 const CurrentEvent = () => {
   const headers = [
@@ -47,33 +48,7 @@ const CurrentEvent = () => {
   return (
     <div className="sectionWrapper">
       <div className="title">Current Events</div>
-
-      <table className="displayTable">
-        <thead>
-          <tr>
-            {headers.map((element, index) => {
-              return <th key={index + "headerEntry"}>{element}</th>;
-            })}
-          </tr>
-        </thead>
-        <tbody>
-          {events.map((element, index) => {
-            return (
-              <tr key={index + "dataEntry"}>
-                <td>{element.room}</td>
-                <td>{element.sensor}</td>
-                <td>{element.message}</td>
-                <td>{element.lastUpdate}</td>
-                <td>{element.lastCheckIn}</td>
-                <td>{element.performance}</td>
-              </tr>
-            );
-          })}
-          <tr>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+      <DisplayTable headers={headers} data={events} />
     </div>
   );
 };

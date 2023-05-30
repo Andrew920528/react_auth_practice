@@ -47,3 +47,38 @@
     border-bottom-right-radius: 10px;
   }
 }
+
+.interactiveTable {
+  .statusCircle {
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+    min-width: 10px;
+    border-style: none;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+  }
+  .statusInCol {
+    margin-left: 30%;
+  }
+  tbody tr:not(:last-child) {
+    transition: all 0.2s ease;
+  }
+  tbody tr:not(:last-child):hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+  }
+  .footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    .footerBlock {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 7px;
+      margin-right: 20px;
+    }
+  }
+}
