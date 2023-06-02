@@ -12,7 +12,7 @@ const PromptCard = ({
     if (promptCardData) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "hidden";
     }
   }, [promptCardData]);
   return (

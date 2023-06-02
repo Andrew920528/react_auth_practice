@@ -71,6 +71,8 @@ const AddConfig = () => {
             selected={selectedBuilding}
             options={["building 1", "building 2", "building 3", "building 4"]}
             setSelected={setSelectedBuilding}
+            placeHolder="Select Building"
+            styleContext="addConfig"
           ></Dropdown>
         </div>
       </div>

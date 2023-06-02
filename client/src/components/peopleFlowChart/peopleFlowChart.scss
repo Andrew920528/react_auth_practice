@@ -33,6 +33,7 @@ $graphColor: #5baba0;
     box-shadow: $cardShadow;
     border-radius: $cardBorderRadius;
     padding: $cardPadding;
+    position: relative;
     .cardHeader {
       display: flex;
       flex-direction: row;

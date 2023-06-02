@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const PopUpWindow = ({ id, width, height, padding, switchOn, children }) => {
+const PopUpWindow = ({ id, width, height, minWidth, switchOn, children }) => {
   return (
     <div
       className="prompt-card-fit-div"
@@ -15,9 +15,9 @@ const PopUpWindow = ({ id, width, height, padding, switchOn, children }) => {
         style={{
           width: `${width}vw`,
           height: `${height}vh`,
-          padding: padding,
+          minWidth: `${minWidth}px`,
           opacity: switchOn ? "1" : "0",
-          overflow: switchOn ? "auto" : "hidden",
+          overflow: switchOn ? "hidden" : "hidden",
         }}
       >
         {children}

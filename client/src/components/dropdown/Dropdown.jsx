@@ -1,6 +1,13 @@
 import { React, useEffect, useState } from "react";
 import "./Dropdown.scss";
-const Dropdown = ({ selected, setSelected, options, forceClose }) => {
+const Dropdown = ({
+  selected,
+  setSelected,
+  options,
+  forceClose,
+  placeHolder,
+  styleContext,
+}) => {
   // for dropdown
   const [open, setOpen] = useState(false);
 
@@ -21,22 +28,13 @@ const Dropdown = ({ selected, setSelected, options, forceClose }) => {
     );
   };
   return (
-    <div className="dropdownWrapper">
-      <div
-        className="dropdownTrigger"
-        style={
-          open
-            ? {
-                backgroundColor: "rgb(227, 255, 125)",
-                fontSize: "170%",
-              }
-            : { backgroundColor: "white", fontSize: "100%" }
-        }
-        onClick={() => setOpen(!open)}
-      >
-        <div style={selected ? { color: "black" } : { color: "gray" }}>
-          {selected ? selected : "Select Building"}
-        </div>
+    <div
+      className={`dropdownWrapper ${styleContext} ${
+        !forceClose && open ? "open" : "close"
+      }`}
+    >
+      <div className={"dropdownTrigger"} onClick={() => setOpen(!open)}>
+        <div className="display">{selected ? selected : placeHolder}</div>
         <div
           className="triangle"
           style={
@@ -55,10 +53,6 @@ const Dropdown = ({ selected, setSelected, options, forceClose }) => {
           {options.map((value, ind) => (
             <DropdownItem key={"dropdown" + ind} text={value}></DropdownItem>
           ))}
-          {/* <DropdownItem text={"Option 1"}></DropdownItem>
-          <DropdownItem text={"Option 2"}></DropdownItem>
-          <DropdownItem text={"Option 3"}></DropdownItem>
-          <DropdownItem text={"Option 4"}></DropdownItem> */}
         </ul>
       </div>
     </div>

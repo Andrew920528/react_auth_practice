@@ -1,70 +1,141 @@
-$width: 200px;
+/// Dropdown
+///
+// Variables
+$borderRadius: 5px;
 .dropdownWrapper {
-  width: $width;
+  width: 100%;
+  position: relative;
+  .dropdownTrigger {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    .triangle {
+      width: 0px;
+      height: 0px;
+      border-style: solid;
+      border-width: 0 5px 7px 5px;
+      border-radius: 2px;
+      border-color: transparent transparent #6b6b6b transparent;
+      transition: transform 0.2s ease;
+    }
+  }
+  .dropdownTrigger:hover {
+    cursor: pointer;
+  }
+  .dropdown-menu {
+    z-index: 1;
+    background-color: #f5f5f5;
+    opacity: 1;
+    position: absolute;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    ul {
+      list-style: none;
+      padding: 0px;
+      li {
+        padding: 3px;
+        border-radius: 3px;
+      }
+      li:hover {
+        background-color: #e7e7e7;
+      }
+    }
+  }
+  .dropdown-menu.active {
+    height: 200px;
+    transition: height 0.2s ease;
+    overflow-y: auto;
+  }
+  .dropdown-menu.inactive {
+    height: 0px;
+    transition: height 0.2s ease;
+    overflow-y: hidden;
+  }
+  .dropdownItem a:hover {
+    cursor: default;
+  }
 }
 
-.dropdownTrigger {
-  width: $width;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
+.addConfig .dropdownTrigger {
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   border-bottom: 2px solid #656565;
   transition: all 0.4s ease;
-  .triangle {
-    width: 0px;
-    height: 0px;
-    border-style: solid;
-    border-width: 0 5px 7px 5px;
-    border-color: transparent transparent #6b6b6b transparent;
-    transition: transform 0.2s ease;
+  background-color: white;
+}
+
+.addConfig.open .dropdownTrigger {
+  font-size: 170%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border-bottom: 2px solid rgb(236, 255, 153);
+}
+
+.addConfig.close .dropdownTrigger:hover {
+  background-color: #eeeeee;
+}
+
+// ============ Top Banner ============
+.topBannerDropdown {
+  // box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  .dropdownTrigger {
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    .display {
+      font-family: "Montserrat";
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 20px;
+      text-align: left;
+      color: #666666;
+      padding: 2px;
+      transition: all 0.3s ease;
+    }
+  }
+  .dropdownTrigger:hover {
+    .display {
+      color: #000000;
+    }
+  }
+  .dropdown-menu {
+    ul {
+      li {
+        border-radius: 3px;
+        font-family: "Montserrat";
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: left;
+        color: #666666;
+        padding: 2px;
+        transition: all 0.3s ease;
+      }
+      li:hover {
+        background-color: #e7e7e7;
+        color: #000000;
+      }
+    }
   }
 }
 
-.dropdownTrigger:hover {
-  cursor: pointer;
-  background-color: #e7e7e7;
-}
-
-ul {
-  list-style: none;
-  padding: 0px;
-  li {
-    padding: 3px;
-    border-radius: 3px;
+.topBannerDropdown.open {
+  .dropdownTrigger {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom: 1px solid #aaaaaa;
   }
-  li:hover {
-    background-color: #e7e7e7;
+  .dropdown-menu.active {
+    height: 120px;
   }
-}
-
-.dropdown-menu {
-  z-index: 1;
-  background-color: #f4f4f4;
-  opacity: 1;
-  position: absolute;
-  width: $width;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-.dropdown-menu.active {
-  height: 200px;
-  transition: height 0.2s ease;
-  overflow-y: auto;
-}
-
-.dropdown-menu.inactive {
-  height: 0px;
-  transition: height 0.2s ease;
-  overflow-y: hidden;
-}
-
-.dropdownItem a:hover {
-  cursor: default;
 }

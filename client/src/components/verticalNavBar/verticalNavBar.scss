@@ -3,7 +3,23 @@
   flex-direction: row;
 }
 
+.navbarBackground {
+  background-color: rgba(0, 0, 0, 0.325);
+  width: 1600px;
+  height: 100%;
+  position: absolute;
+  @media (min-width: 767px) {
+    display: none;
+    position: relative;
+  }
+}
+
 .nav-menu {
+  z-index: 11;
+  position: absolute;
+  @media (min-width: 767px) {
+    position: relative;
+  }
   background-color: #060b26;
   height: 100vh;
   display: flex;
