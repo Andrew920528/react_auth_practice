@@ -18,7 +18,7 @@
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  background-color: #e0e287;
+  background-color: $primary;
   padding: 5px 30px 5px 30px;
   box-sizing: border-box;
   position: sticky;
@@ -79,7 +79,7 @@
 .topBanner {
   @include flexCol();
   width: 100%;
-  background: #e0e287;
+  background: $primary;
   border-radius: 0px 0px 10px 10px;
   padding: 30px 30px 30px 30px;
   box-sizing: border-box;
@@ -91,7 +91,6 @@
     color: #000000;
     margin-top: 40px;
     margin-bottom: 20px;
-    // margin-left: 5%;
   }
   .summaryWrapper {
     @include flexCol();

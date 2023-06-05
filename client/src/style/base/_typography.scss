@@ -1,0 +1,65 @@
+/* ====================================
+Title: Typography
+---------------------------------------
+Purpose:
+- Initialize typography to some default values
+---------------------------------------
+Guidelines:
+- We want to be able to style fonts flexibiliy,
+so rules here should just be the default
+---------------------------------------
+Sections:
+- Base
+- Text Boxes
+- Headings
+- Table Content
+==================================== */
+
+@use "sass:map";
+html {
+  @include base-font-size;
+}
+
+body {
+  line-height: $base-line-height;
+  font-family: $base-font-family;
+  color: $on-light;
+  opacity: map.get($opacity, "high-emphasis");
+}
+
+/**
+ * Text Boxes
+ */
+
+a,
+p {
+  margin: 0;
+  font-weight: map.get($font-weight, "regular");
+  font-size: $type-base-size;
+}
+
+/**
+ * Headings
+ * - only use h1 - h4
+ */
+
+$type-levels: 4, 3, 2, 1;
+$level-size: $type-base-size;
+@each $level in $type-levels {
+  $level-size: $level-size * $type-scale;
+  h#{$level} {
+    font-size: $level-size;
+    font-weight: map.get($font-weight, "semiBold");
+    margin: 0;
+    text-rendering: optimizelegibility; // Fix the character spacing for headings
+  }
+}
+
+/**
+* Table Content
+*/
+
+th,
+td {
+  @include secondary-font-size;
+}

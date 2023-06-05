@@ -1,0 +1,90 @@
+/* ====================================
+Title: Mixin
+---------------------------------------
+Purpose:
+- Reusable styling component
+- Eliminate use of "generic" class
+(e.g. .bold, .center, etc.)
+---------------------------------------
+Guidelines:
+- Use mixin over class for style reuse
+- add mixin as needed
+---------------------------------------
+Sections:
+- Typography
+- Breakpoints
+- Styles
+==================================== */
+
+/// Typography
+// font-size
+@mixin base-font-size {
+  font-size: $base-font-size-small-screen;
+  @include with-min-width("medium") {
+    font-size: $base-font-size;
+  }
+}
+
+@mixin secondary-font-size {
+  font-size: $secondary-font-size-small-screen;
+  @include with-min-width("medium") {
+    font-size: $secondary-font-size;
+  }
+}
+
+@mixin tertiary-font-size {
+  font-size: $tertiary-font-size-small-screen;
+  @include with-min-width("medium") {
+    font-size: $tertiary-font-size;
+  }
+}
+
+// font-weight
+@mixin thin-font {
+  font-weight: map.get($font-weight, "thin");
+}
+
+@mixin semiBold-font {
+  font-weight: map.get($font-weight, "semiBold");
+}
+
+@mixin bold-font {
+  font-weight: map.get($font-weight, "bold");
+}
+
+// font-color
+@mixin white-font {
+  color: $on-dark;
+}
+
+/// Breakpoints
+/// Mixin to manage responsive breakpoints
+/// @author Kitty Giraudel
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin with-min-width($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "+"Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+// opacity
+@mixin high-emphasis {
+  opacity: map.get($opacity, "high-emphasis");
+}
+
+@mixin medium-emphasis {
+  opacity: map.get($opacity, "medium");
+}
+
+@mixin disabled {
+  opacity: map.get($opacity, "disabled");
+}

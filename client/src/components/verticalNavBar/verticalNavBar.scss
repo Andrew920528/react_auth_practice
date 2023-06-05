@@ -20,7 +20,7 @@
   @media (min-width: 767px) {
     position: relative;
   }
-  background-color: #060b26;
+  background-color: #050a23;
   height: 100vh;
   display: flex;
   justify-content: start;
@@ -28,7 +28,7 @@
   left: 0%;
   transition: width 850ms;
   overflow-x: hidden;
-  box-shadow: inset -5px 0 10px rgba(0, 0, 0, 0.33);
+  //box-shadow: inset -5px 0 10px rgba(0, 0, 0, 0.33);
   .nav-menu-items {
     display: flex;
     flex-direction: column;

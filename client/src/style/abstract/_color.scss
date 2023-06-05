@@ -1,0 +1,44 @@
+/* ====================================
+Title: Color
+---------------------------------------
+Purpose:
+- Standardize color palette
+---------------------------------------
+Guidelines:
+- Add color as needed
+---------------------------------------
+Sections:
+- Theme
+- Shades
+- Common
+==================================== */
+
+/* Theme */
+
+$primary: #e4e26d;
+$primary-variant: #dcda42;
+$secondary: #050a23;
+$secondary-variant: #0f1d66;
+
+/* Shades */
+
+$opacity: (
+  "high-emphasis": 0.87,
+  "medium": 0.6,
+  "disabled": 0.38,
+);
+
+/* Common */
+
+$surface: white;
+$background: #f0f0f0;
+$on-light: black;
+$on-dark: white;
+$error: #e5383b;
+$on-error: white;
+// data vis
+$status: (
+  "normal": #38bf8b,
+  "alert": #ffca3a,
+  "offline": #ff595e,
+);

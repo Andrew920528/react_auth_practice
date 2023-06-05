@@ -1,0 +1,66 @@
+/* ====================================
+Title: Variable
+---------------------------------------
+Purpose:
+- eliminate use of magic number
+- contains all global variables
+---------------------------------------
+Guidelines:
+- local variables should not be declared here
+---------------------------------------
+Sections:
+- Typography
+- Breakpoints
+==================================== */
+
+/* Section 1: Typography 
+https://typescale.com/ <-- use this handy link to set font styles!
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;700&display=swap");
+// for screen > medium
+$base-font-size: 16px;
+$secondary-font-size: 14px;
+$tertiary-font-size: 12px;
+// for screen < medium
+$base-font-size-small-screen: 14px;
+$secondary-font-size-small-screen: 13px;
+$tertiary-font-size-small-screen: 12px;
+$base-line-height: 1.4;
+$type-scale: 1.25; // major third
+$type-base-size: 1rem;
+$base-font-family: "Montserrat", sans-serif;
+$font-weight: (
+  "thin": 200,
+  "regular": 400,
+  "semiBold": 600,
+  "bold": 700,
+);
+
+/* Section 2: Breakpoints */
+
+/*
+|----|----|----|---->
+0   576  768  991
+breakpoints using bootstrap standards
+*/
+
+$breakpoints: (
+  "small": 576px,
+  "medium": 768px,
+  "large": 993px,
+);
+
+/* Section 3: Styles */
+
+// transitions
+$default-transition-time: 0.3s;
+$default-transition: all $default-transition-time ease;
+// z-index
+$bottom: 0;
+$low: 10;
+$mid: 100;
+$high: 200;
+$top: 1000;
+// box-shadow
+$default-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
