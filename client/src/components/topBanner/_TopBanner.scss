@@ -137,7 +137,7 @@
   .sumTitle {
     font-family: "Montserrat";
     font-weight: 500;
-    opacity: map-get($map: $opacity, $key: "medium");
+    color: rgba($on-light, map-get($opacity, "medium"));
     font-size: $size/2;
   }
   .sumData {

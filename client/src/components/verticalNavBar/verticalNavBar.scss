@@ -4,6 +4,10 @@
 }
 
 .navbarBackground.closed {
+  display: none;
+}
+
+.navbarBackground.expanded {
   background-color: rgba(0, 0, 0, 0.325);
   width: 1600px;
   height: 100%;
@@ -15,9 +19,12 @@
 }
 
 .nav-menu.closed {
-  display: none;
+  left: -100px;
+  transition: all 500ms ease;
   @media (min-width: 767px) {
     display: flex;
+    transition: none;
+    left: 0;
   }
 }
 
@@ -33,7 +40,7 @@
   justify-content: start;
   top: 0;
   left: 0%;
-  transition: width 850ms;
+  transition: all 550ms ease;
   overflow-x: hidden;
   //box-shadow: inset -5px 0 10px rgba(0, 0, 0, 0.33);
   .nav-menu-items {

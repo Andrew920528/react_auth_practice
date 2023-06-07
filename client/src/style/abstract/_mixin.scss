@@ -75,16 +75,3 @@ Sections:
     @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "+"Available breakpoints are: #{map-keys($breakpoints)}.";
   }
 }
-
-// opacity
-@mixin high-emphasis {
-  opacity: map.get($opacity, "high-emphasis");
-}
-
-@mixin medium-emphasis {
-  opacity: map.get($opacity, "medium");
-}
-
-@mixin disabled {
-  opacity: map.get($opacity, "disabled");
-}

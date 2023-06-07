@@ -94,14 +94,6 @@ $graphColor: #122a65;
   margin: $contentMargin/2 $contentMargin $contentMargin $contentMargin;
 }
 
-div.MuiPickersPopper-root.css-1anqmj6-MuiPopper-root-MuiPickersPopper-root.MuiPopper-root
-  > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPickersPopper-paper.css-1yllih9-MuiPaper-root-MuiPickersPopper-paper
-  > div
-  > div.MuiDialogActions-root.MuiDialogActions-spacing.MuiPickersLayout-actionBar.css-hlj6pa-MuiDialogActions-root
-  > button {
-  color: #5baba0;
-}
-
 body
   > div.MuiPickersPopper-root.css-1anqmj6-MuiPopper-root-MuiPickersPopper-root.MuiPopper-root
   > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPickersPopper-paper.css-1yllih9-MuiPaper-root-MuiPickersPopper-paper
@@ -109,23 +101,6 @@ body
   > div.MuiPickersLayout-contentWrapper.css-16b5y55-MuiPickersLayout-contentWrapper
   > div
   > ul
-  > li.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.Mui-selected.MuiMenuItem-root.MuiMenuItem-gutters.Mui-selected.css-1e3wlyl-MuiButtonBase-root-MuiMenuItem-root-MuiMultiSectionDigitalClockSection-item {
-  background-color: #5baba0;
+  > li.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.Mui-selected.MuiMenuItem-root.MuiMenuItem-gutters.Mui-selected.css-1yfswlc-MuiButtonBase-root-MuiMenuItem-root-MuiMultiSectionDigitalClockSection-item {
   border-radius: 3px;
-}
-
-body
-  > div.MuiPickersPopper-root.css-1anqmj6-MuiPopper-root-MuiPickersPopper-root.MuiPopper-root
-  > div.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPickersPopper-paper.css-1yllih9-MuiPaper-root-MuiPickersPopper-paper
-  > div
-  > div
-  > div
-  > div.MuiPickersFadeTransitionGroup-root.MuiDateCalendar-viewTransitionContainer.css-15v8kdh-MuiPickersFadeTransitionGroup-root-MuiDateCalendar-viewTransitionContainer
-  > div
-  > div
-  > div.MuiPickersSlideTransition-root.MuiDayCalendar-slideTransition.css-1cafy48-MuiPickersSlideTransition-root-MuiDayCalendar-slideTransition
-  > div
-  > div
-  > button.MuiButtonBase-root.MuiPickersDay-root.Mui-selected.MuiPickersDay-dayWithMargin.css-qa7bje-MuiButtonBase-root-MuiPickersDay-root {
-  background-color: #5baba0;
 }

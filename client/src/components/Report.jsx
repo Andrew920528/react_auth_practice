@@ -32,7 +32,7 @@ const Report = () => {
                   },
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": {
-                      borderColor: "#c0e193",
+                      //borderColor: "#c0e193",
                     },
                   },
                 }}
@@ -52,18 +52,17 @@ const Report = () => {
                   },
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": {
-                      borderColor: "#c0e193",
+                      //borderColor: "#c0e193",
                     },
                   },
                   "dialog .MuiButton-text": {
-                    color: "#c0e193",
+                    //color: "#c0e193",
                   },
 
                   ".MuiButton-selected": {
-                    backgroundColor: "#c0e193",
-                    color: "#c0e193",
+                    // backgroundColor: "#c0e193",
+                    //color: "#c0e193",
                   },
-                  selectColor: "#aaaaaa",
                 }}
                 maxTime={endTime}
               />
@@ -83,7 +82,7 @@ const Report = () => {
                 },
                 "& .MuiOutlinedInput-root": {
                   "&.Mui-focused fieldset": {
-                    borderColor: "#c0e193",
+                    // borderColor: "#c0e193",
                   },
                 },
               }}
