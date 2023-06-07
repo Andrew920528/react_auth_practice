@@ -12,9 +12,11 @@ const VerticalNavBar = ({ vbData }) => {
 
   return (
     <>
-      <div className="navbarBackground"></div>
       <div
-        className={sidebar ? "nav-menu expanded" : "nav-menu"}
+        className={`navbarBackground ${sidebar ? "expanded" : "closed"}`}
+      ></div>
+      <div
+        className={`nav-menu ${sidebar ? "expanded" : "closed"}`}
         style={sidebar ? { width: "221px" } : { width: "70px" }}
       >
         <div className="nav-menu-items">

@@ -80,10 +80,13 @@
   @include flexCol();
   width: 100%;
   background: $primary;
+  background: linear-gradient(155deg, transparent 0 80%, rgba(white, 0.2) 20%),
+    linear-gradient(45deg, transparent 0 70%, rgba(white, 0.2) 30%), $primary;
   border-radius: 0px 0px 10px 10px;
   padding: 30px 30px 30px 30px;
   box-sizing: border-box;
   align-items: start;
+  overflow-y: hidden;
   .title {
     font-family: "Montserrat";
     font-weight: 700;
@@ -133,15 +136,17 @@
   }
   .sumTitle {
     font-family: "Montserrat";
-    font-weight: 600;
+    font-weight: 500;
+    opacity: map-get($map: $opacity, $key: "medium");
     font-size: $size/2;
   }
   .sumData {
     font-family: "Montserrat";
-    font-weight: 500;
+    font-weight: 600;
     font-size: $size/2;
     .inspect {
       text-decoration: underline;
+      font-weight: 600;
     }
     .inspect:hover {
       cursor: pointer;

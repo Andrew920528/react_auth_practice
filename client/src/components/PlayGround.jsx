@@ -11,6 +11,7 @@ import Dropdown from "./dropdown/Dropdown";
 
 import { BsFillPersonFill } from "react-icons/bs";
 import TopNavBar from "./topBanner/TopNavBar";
+import Report from "./Report";
 
 const PlayGround = () => {
   const [scrollTop, setScrollTop] = useState(0);
@@ -65,21 +66,22 @@ const PlayGround = () => {
           <div
             style={{ backgroundColor: "", height: "1000px", padding: "20px" }}
           >
-            <PeopleFlowChart></PeopleFlowChart>
-            <div style={{ width: "60%" }}>
+            {/* <PeopleFlowChart></PeopleFlowChart> */}
+            {/* <div style={{ width: "100%", marginTop: "40px" }}>
               <CurrentEvent />
-            </div>
+            </div> */}
+
+            {/* <div className="configContainer">
+              <AddConfig />
+            </div> */}
+
+            {/* <div style={{ width: "100%", marginTop: "40px" }}>
+              <RoomInfo />
+            </div> */}
+            <Report></Report>
           </div>
         </div>
       </div>
-
-      {/* <div className="configContainer">
-        <AddConfig />
-      </div> */}
-
-      {/* <div style={{ width: "60%" }}>
-        <RoomInfo />
-      </div> */}
 
       {/* <div>
         <h1>Header 1</h1>
